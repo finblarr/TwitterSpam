@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Filter configuration</li>
+              <li class="">Toggle which replies to hide. We'll show you which replies would be hidden for your most recent tweet.</li>
+              <li class="nav-header">Content filters</li>
+              {% for filter in filters['content_filters'] %}
+              <li class="">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  {{ filter['text']}}
+                </div>
+              </li>
+              {% endfor %}
+              <li class="nav-header">Account filters</li>
+              {% for filter in filters['account_filters'] %}
+              <li>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                  {{ filter['text']}}
+                </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </div><!--/.well -->
+    </div><!--/span-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">ReplyManager</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/about">About</a></li>
+            </ul>
+            <p class="navbar-text pull-right">Logged in as <a href="/user">username</a></p>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span9">
+          <div class="hero-unit">
+            <h3>Your tweet:</h3>
+            <blockquote class="twitter-tweet">
+              <p lang="en" dir="ltr">{{ tweet.text}}
+              </p>&mdash; {{ user.username }} ( @{{ user.user_id }}) <a href="https://twitter.com/VitalikButerin/status/{{ tweet.id. }}"> {{ tweet.created_at }} </a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <h3>Most recent 5 replies you'd hide with these rules:</h3>
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="ro" dir="ltr">Please reserve a pre-sale permit<br><br>0xbcd32bc7Ec5aE276cd99536956A06a71447CA4cA</p>&mdash; Naxi (@MdJC7QwDA5HGuxQ) <a href="https://twitter.com/MdJC7QwDA5HGuxQ/status/1511429630833700865?ref_src=twsrc%5Etfw">April 5, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>            <h4>Hidden because:</h4>
+            <ul class="nav nav-list">
+              <li class="active">Includes an eth address</li>
+            </ul>
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Sdoge！ I won&#39;t let you down! <a href="https://t.co/hSvz1EhNiN">pic.twitter.com/hSvz1EhNiN</a></p>&mdash; kaka (@kaka81144310) <a href="https://twitter.com/kaka81144310/status/1511313925354131460?ref_src=twsrc%5Etfw">April 5, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                        <h4>Hidden because:</h4>
+            <ul class="nav nav-list">
+              <li class="active">User has 8 numbers in name</li>
+              </ul>
+
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="und" dir="ltr"><a href="https://t.co/OxB6liX926">https://t.co/OxB6liX926</a></p>&mdash; эдгар (@ed_niger) <a href="https://twitter.com/ed_niger/status/1512713857726353411?ref_src=twsrc%5Etfw">April 9, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>                      <h4>Hidden because:</h4>
+            <ul class="nav nav-list">
+              <li class="active">Reply is nothing but a quote tweet.</li>
+              </ul>
+          </div>
+
+        </div><!--/span-->
+      </div><!--/row-->
+    </div>
+{% endblock %}
